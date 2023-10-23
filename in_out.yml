@@ -1,0 +1,20 @@
+---
+#This is to test variables when calling ansible playbook Part 1 of the final test!!!!!
+#Also turned off facts via gather_facts so that it will not print more detaisl than needed to test output.
+#Also of note prompt asks for input and we put private there in order to not make the text private so you can see what you
+#are typing.
+ - hosts: localhost
+   vars:
+    x: 45
+    my_name: "Fred_M"
+   vars_prompt:
+    name: y
+    prompt: Enter the value for Y please
+    private: false
+   gather_facts: false        
+   tasks:
+    - debug:
+       msg:
+            - "The x value is: {{x}}"
+            - "My_name is: {{my_name}}"
+            - "The Value you entered is: {{y}}"
